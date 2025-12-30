@@ -1,0 +1,88 @@
+name: flutter_delivery_tracker
+description: Real-time delivery tracking with WebSocket, Google Maps, Supabase, and Hive for offline support.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+
+  # Maps & Location
+  google_maps_flutter: ^2.9.0
+  geolocator: ^13.0.1
+  geocoding: ^3.0.0
+  flutter_polyline_points: ^2.1.0
+
+  # Backend & Database
+  supabase_flutter: ^2.8.0
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+
+  # WebSocket & Real-time
+  web_socket_channel: ^3.0.1
+
+  # Notifications
+  flutter_local_notifications: ^17.2.3
+
+  # UI & Design
+  google_fonts: ^6.2.1
+  flutter_animate: ^4.5.0
+  shimmer: ^3.0.0
+  cached_network_image: ^3.4.1
+  flutter_slidable: ^3.1.1
+  lottie: ^3.1.2
+  glassmorphism: ^3.0.0
+  flutter_svg: ^2.0.10+1
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  permission_handler: ^11.3.1
+  connectivity_plus: ^6.0.5
+  get_it: ^7.7.0
+  injectable: ^2.4.4
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  dartz: ^0.10.1
+  rxdart: ^0.28.0
+
+  # Icons
+  iconsax: ^0.0.8
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.12
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+  injectable_generator: ^2.6.2
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
+  fonts:
+    - family: Satoshi
+      fonts:
+        - asset: assets/fonts/Satoshi-Regular.otf
+        - asset: assets/fonts/Satoshi-Medium.otf1
+          weight: 500
+        - asset: assets/fonts/Satoshi-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Satoshi-Black.otf
+          weight: 900

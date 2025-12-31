@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'core/services/notification_service.dart';
+import 'core/services/service_locator.dart';
 import 'core/theme/app_theme.dart';
+import 'features/tracking/presentation/bloc/tracking_bloc.dart';
+import 'features/tracking/presentation/pages/home_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +27,12 @@ void main() async {
 
   // Initialize Hive for offline storage
   await Hive.initFlutter();
+
+  // Setup service locator
+  await setupServiceLocator();
+
+  // Initialize notifications
+  await getIt<NotificationService>().initialize();
 
   // Initialize Supabase
   await Supabase.initialize(
@@ -41,7 +53,9 @@ class DeliveryTrackerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // Add your BlocProviders here
+        BlocProvider(
+          create: (_) => getIt<TrackingBloc>()..add(InitializeTrackingEvent()),
+        ),
       ],
       child: MaterialApp(
         title: 'Delivery Tracker',
@@ -49,7 +63,7 @@ class DeliveryTrackerApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
-        home: const Scaffold(),
+        home: const HomePage(),
       ),
     );
   }
